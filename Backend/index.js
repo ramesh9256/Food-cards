@@ -152,7 +152,7 @@ app.get('/data', async (req, res) => {
             cost: "$28",
         },
     ];
-    const ans = userModel.insertMany(foodData);
+    const ans = await userModel.insertMany(foodData);
     res.json(ans);
 
 })
