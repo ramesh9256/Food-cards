@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/data', async (req, res) => {
+    await userModel.deleteMany()
     const foodData = [
         {
             img: "https://images.unsplash.com/photo-1546069901-eacef0df6022?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
@@ -151,8 +152,8 @@ app.get('/data', async (req, res) => {
             cost: "$28",
         },
     ];
-
-    res.json(foodData);
+    const ans = userModel.insertMany(foodData);
+    res.json(ans);
 
 })
 const port = 5000; // Dynamic port
